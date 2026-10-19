@@ -1,4 +1,4 @@
-# Analysis and Automated Detection of Self-Admitted Technical Debt
+﻿# Analysis and Automated Detection of Self-Admitted Technical Debt
 
 A machine-learning project exploring the automated detection of Self-Admitted Technical Debt (SATD) in source-code comments from open-source software projects.
 
@@ -167,3 +167,14 @@ The scripts generate result files in the project directory. Exact outputs depend
 ## Research Context
 
 This project is an academic investigation into the automated detection of Self-Admitted Technical Debt in open-source software comments. Its results represent the current implementation and experimental setup, with further validation and methodological improvements needed before drawing broader conclusions.
+
+## Evaluation Notes
+
+The model-comparison experiment evaluates Naive Bayes and LinearSVC using leave-one-project-out evaluation across 10 software projects. The SVM tuning experiment evaluates `C` values of 0.1, 1.0, and 10.0 on the same project set.
+
+The reported mean precision, recall, and F1-score are arithmetic means of the individual project-level metrics. The consolidated results were checked against the underlying model-comparison and SVM-tuning CSV files.
+
+LinearSVC with `C=0.1` achieved the highest mean F1-score among the tested configurations (0.5978). Since configuration selection used the same projects as the comparison, this result is exploratory and requires independent validation on additional projects.
+
+The separate random train/test baseline experiment and the held-out Apache Ant experiment use different evaluation protocols. Their scores should not be directly compared with the leave-one-project-out means without accounting for these differences.
+
