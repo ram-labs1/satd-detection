@@ -1,0 +1,2 @@
+test_project,training_comments,testing_comments,true_positives,false_negatives,false_positives,true_negatives,precision,recall,f1_score
+apache-ant-1.7.0,58177,4098,12,119,13,3954,0.48,0.0916030534351145,0.15384615384615385

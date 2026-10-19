@@ -1,0 +1,21 @@
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment secrets
+.env
+.env.*
+
+# Editor and operating system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Research dataset: do not publish until licence is verified
+technical_debt_dataset.csv
