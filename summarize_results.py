@@ -1,4 +1,4 @@
-
+﻿
 import pandas as pd
 
 # Load the existing experiment results
@@ -66,8 +66,3 @@ print("Consolidated cross-project results:")
 print(summary.round(4).to_string(index=False))
 print("\nSaved consolidated_results.csv")
 
-summary.to_csv("consolidated_results.csv", index=False)
-
-print("Consolidated cross-project results:")
-print(summary.round(4).to_string(index=False))
-print("\nSaved consolidated_results.csv")
