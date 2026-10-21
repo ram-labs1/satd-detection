@@ -19,3 +19,13 @@ Thumbs.db
 
 # Research dataset: do not publish until licence is verified
 technical_debt_dataset.csv
+
+# Local release datasets and generated comparison details
+v5.3.29_satd.csv
+v5.3.30_satd.csv
+satd_hash_comparison_details.csv
+
+# Local synthetic test artifacts
+test_old.csv
+test_new.csv
+test_evolution_summary.csv
