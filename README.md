@@ -169,8 +169,13 @@ pip install pandas scikit-learn matplotlib
 Run the relevant scripts from the project directory:
 
 ```bash
+python inspect_dataset.py
 python train_model.py
 python compare_models.py
+python tune_svm.py
+python all_projects_evaluation.py
+python cross_project_evaluation.py
+python summarize_results.py
 python synopsis_method.py
 ```
 
