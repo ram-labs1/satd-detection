@@ -4,14 +4,16 @@ A machine-learning project for detecting Self-Admitted Technical Debt (SATD) in 
 
 ## 1. Project Overview
 
-Self-Admitted Technical Debt (SATD) occurs when developers explicitly acknowledge technical compromises in source code comments, such as temporary implementations, design issues, or code that requires future improvement.
+Self-Admitted Technical Debt (SATD) occurs when developers explicitly acknowledge technical compromises in source-code comments, such as temporary implementations, design issues, or code that requires future improvement.
 
-This project explores automated SATD detection using machine-learning models and investigates how predicted SATD changes across software releases.
+This project investigates automated SATD detection using machine-learning models and studies how predicted SATD evolves across successive software releases.
 
 The project has two main components:
 
-- **SATD classification:** Training and evaluating text-classification models to distinguish SATD comments from non-SATD comments.
-- **Longitudinal analysis:** Comparing model predictions across two software releases to identify persistent, newly observed, and no-longer-observed SATD-related comment hashes.
+- **SATD classification:** Training and evaluating machine-learning models to distinguish SATD comments from non-SATD comments using cross-project evaluation.
+- **Longitudinal analysis:** Applying the selected SATD detection approach to the 40 Spring Framework 5.3 patch releases, from `v5.3.0` to `v5.3.39`, to study SATD trends, density, introduction and removal patterns, and distribution across software modules.
+
+The longitudinal study compares successive release snapshots to understand changes in predicted SATD over time. Because the analysis relies on automated predictions and comment matching, the results are interpreted with consideration of classification errors and tracking limitations.
 
 ## 2. Objectives
 
@@ -125,29 +127,34 @@ These results show that the number and identity of predicted SATD comments can c
 
 **Important limitation:** These are changes in comment-hash matching and model predictions. A newly observed SATD hash does not necessarily mean that new technical debt was introduced, and a no-longer-observed SATD hash does not prove that technical debt was resolved. Changes may also arise from comment edits, source changes, snapshot differences, or classification errors.
 
-## 6. Project Structure
+## 6. Longitudinal Analysis Across 40 Releases
 
-```text
-satd-python/
-├── train_model.py
-├── compare_models.py
-├── synopsis_method.py
-├── compare_satd_releases.py
-├── longitudinal_tracking.py
-├── experiment_results.csv
-├── consolidated_results.csv
-├── model_comparison_results.csv
-├── cross_project_results.csv
-├── cross_project_predictions.csv
-├── baseline_predictions.csv
-├── baseline_predictions_alpha05.csv
-├── synopsis_voting_results.csv
-├── satd_evolution_v5.3.29_to_v5.3.30.csv
-├── satd_hash_changes.png
-└── satd_records_by_release.png
-```
+The report analyses 40 Spring Framework 5.3 patch releases, from `v5.3.0` to `v5.3.39`, covering 39 consecutive release-to-release transitions.
 
-The structure lists the principal scripts and selected generated results. Some intermediate files and local datasets are intentionally excluded from version control.
+### Reported Findings
+
+| Metric | Reported result |
+|---|---:|
+| Releases analysed | 40 |
+| Release-to-release transitions | 39 |
+| Total comment observations across snapshots | 1,978,841 |
+| Total comments, first to last release | 48,563 → 50,026 |
+| Predicted SATD comments, first to last release | 14,745 → 15,183 |
+| Change in predicted SATD count | +438 (+3.0%) |
+| Mean SATD density | Approximately 30.37% |
+| SATD introduced across transitions | 1,418 |
+| SATD no longer observed across transitions | 1,026 |
+| Transitions with net increase / decrease / no change | 32 / 3 / 4 |
+
+### Tracking Method
+
+Comment hashes are compared between consecutive releases to identify SATD-related comments that persist, appear newly, or are no longer observed. The analysis also examines SATD density over time and the distribution of predicted SATD across Spring Framework modules.
+
+### Interpretation and Limitations
+
+These values are model-based predictions, not manually verified counts of actual technical debt. A comment that is no longer observed may have been edited, moved, or changed in a way that produces a different hash. Therefore, disappearance alone does not prove that the underlying technical debt was resolved.
+
+The full 40-release results described in the report should be distinguished from the two-snapshot comparison script and CSV currently documented in this repository. Reproducing the complete study requires the corresponding release data, prediction outputs, and analysis workflow.
 
 ## 7. Running the Experiments
 
